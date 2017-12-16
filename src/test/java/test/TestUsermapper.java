@@ -23,6 +23,14 @@ public class TestUsermapper {
 	@Test
 	public void regist() {
 		
-		assertEquals(1, ump.registUser("zq1", "q"));
+		assertEquals(1, ump.registUser("zq3", "q"));
 	}
+	
+	@Test
+	public void qurey() {
+		
+		assertNotNull(ump.qureyUser("zq1"));
+	}
+	
+	
 }
