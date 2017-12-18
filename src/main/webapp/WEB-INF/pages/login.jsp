@@ -11,7 +11,7 @@
 <h1>登陆</h1>
 		<br>
 		<form id="flowForm" method="post">
-		账号：<input type="text" id="userName">
+		账号：<input type="text" id="username">
 		密码：<input type="password" id="password">		
 		</form>
 		<br>
@@ -41,7 +41,7 @@
 
 	function login(){
 		var user = {
-			userName : $('#userName').val(),
+			username : $('#username').val(),
 			password : $('#password').val()
 		};
 		

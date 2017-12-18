@@ -45,5 +45,12 @@ public class AjaxDto {
 		return dto;
 	}
 	
+	public static AjaxDto success(Object obj) {
+		AjaxDto dto = new AjaxDto();
+		dto.setFlag(true);
+		dto.setData(obj);
+		return dto;
+	}
+	
 
 }

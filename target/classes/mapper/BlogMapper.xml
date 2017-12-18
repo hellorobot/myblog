@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="top.robotman.myblog.mapper.BlogMapper">
+
+	<resultMap type="blog" id="blogMapper">
+		<id property="id" column="id" />
+		<result property="username" column="username" />
+		<result property="title" column="title" />
+		<result property="createtime" column="create_time" />
+		<result property="content" column="content" />
+		<result property="modifytime" column="modify_time" />
+		<result property="blogid" column="blogid" />
+	</resultMap>
+
+	<sql id="blog_filed">
+		id, title, content, username,create_time,modify_time,blogid
+	</sql>
+	<!-- <select id="selecetUser" resultMap="userMapper"> select <include refid="user_filed"></include> 
+		from user where user_name = #{username}; </select> -->
+
+	<select id="getBlogList" resultMap="blogMapper">
+		select
+		<include refid="blog_filed"></include>
+		from blog
+		where username = #{username}
+		ORDER BY blogid ASC
+		LIMIT
+		#{startPoint},#{moveLength} ;
+	</select>
+
+	<select id="getBlogNum" resultType="Integer">
+		select COUNT(id)
+		from blog
+		where username = #{username};
+	</select>
+
+	<delete id="deleteBlogByid">
+		DELETE FROM blog
+		WHERE id=#{id};
+	</delete>
+
+	<insert id="writeBlog" useGeneratedKeys="true">
+		INSERT into blog
+		(title, content, username,create_time,modify_time,blogid)
+		value
+		(#{title},#{content}, #{username},now(), now(),#{blogid});
+	</insert>
+
+	<select id="getBlog" resultMap="blogMapper">
+		select <include refid="blog_filed"></include>
+		from blog
+		where id=#{id};
+	</select>
+	
+	<update id="modifyBlog">
+		UPDATE blog SET 
+		title = #{title},content=#{content},modify_time=now()
+		WHERE id = #{id}; 
+	</update>
+
+
+
+
+	<!-- <insert id="addFlow" useGeneratedKeys="true" keyProperty="id"> INSERT 
+		into atm_flow(card_num, amount, flow_type, descript, create_time) value(#{cardNum}, 
+		#{amount}, #{flowType}, #{descript}, now()); </insert> <select id="listFlow" 
+		resultMap="flowMapper"> select <include refid="flow_filed"></include> from 
+		atm_flow where card_num = #{cardNum} LIMIT #{currentPage},#{eachPageFlowsNum}; 
+		</select> <select id="countFlow" resultType="int"> select count(card_num) 
+		from atm_flow where card_num = #{cardNum}; </select> -->
+</mapper>

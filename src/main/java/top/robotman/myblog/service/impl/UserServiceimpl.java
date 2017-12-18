@@ -37,7 +37,26 @@ public class UserServiceimpl implements UserService{
 
 	@Override
 	public User login(String username,String password) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		if(StringUtils.isEmpty(username)) {
+			throw new BizExcepetion("用户名不能为空");
+		}
+		
+		if(StringUtils.isEmpty(password)) {
+			throw new BizExcepetion("密码不能为空");
+		}
+
+		
+		User user = usermp.qureyUser(username);
+		
+		if(user == null) {
+			throw new BizExcepetion("用户名或密码错误");
+		}
+		
+		if(!DigestUtils.md5Hex(password+username).equals(user.getPassword())) {
+			throw new BizExcepetion("用户名或密码错误");
+		}			
+		// TODO Auto-generated method stub		
+		return user;
 	}
 }

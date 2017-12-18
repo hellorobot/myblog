@@ -16,7 +16,9 @@ public class BaseController {
 	
 	@ExceptionHandler(Exception.class)
 	@ResponseBody
-	public AjaxDto handlerException(Exception e) {		
+	public AjaxDto handlerException(Exception e) {	
+		System.out.println("【【ERROE！！！】】" + e.getStackTrace());
+		System.out.println("【【ERROE！！！】】" + e.getMessage());
 		return AjaxDto.faild("操作失败，请联系客服");
 	}
 

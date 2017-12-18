@@ -4,7 +4,6 @@
 <div align="center">
 	<meta http-equiv="content-type" content="text/html;charset=utf-8">
 	<title>MY-BLOG</title> 
-	<img src="http://img4.imgtn.bdimg.com/it/u=1608273676,775624770&fm=27&gp=0.jpg"
-		width="300" />
+	<img src="/head.png" width="1000" />
 </div>
 </head>
