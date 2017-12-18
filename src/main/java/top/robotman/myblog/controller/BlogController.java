@@ -44,22 +44,27 @@ public class BlogController extends BaseController{
 	}
 	
 	@RequestMapping("/toModify")
-	public String toModify(int id,HttpServletRequest req) {
-		System.out.println("xxxxxxx"+id);
-		
-		Blog blog = blogService.getBlog(id);
-		req.setAttribute("blog", blog);
-		
+	public String toModify(int id,HttpServletRequest req) {		
+		req.setAttribute("id", id);
 		return "modifyBlog";
 	}
 	
 	@RequestMapping("/modify")
 	@ResponseBody
 	public AjaxDto modify(String title,String content,int id) {
-
+		
 		int rows = blogService.modifyBlog(id, title, content);
 		
 		return AjaxDto.success("修改成功");
+	}
+	
+	@RequestMapping("/modifyLoad")
+	@ResponseBody
+	public AjaxDto modifyLoad(int id) {
+
+		Blog blog = blogService.getBlog(id);
+		
+		return AjaxDto.success(blog);
 	}
 	
 	

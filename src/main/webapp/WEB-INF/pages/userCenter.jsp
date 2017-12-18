@@ -129,7 +129,10 @@ function loadBlogList(){
 	
 }
 
-loadBlogList();
+$(document).ready(function(){
+	loadBlogList();
+});
+
 
 </script>
 

@@ -14,8 +14,8 @@
 		我的博文 <br />
 
 		<form id="blog" method="post">
-		<input type="hidden" id="id" value="${blog.id}">
-			标题 ：<input type="text" id="title" value="${blog.title}"> <br /> <br />
+		<input type="hidden" id="id" >
+			标题 ：<input type="text" id="title" > <br /> <br />
 			博文 ：<input type="text" id="content" style="height:200px;width:600px;padding-left:5px;" value="${blog.content}"> 
 			
 			<!--  <textarea rows="5" style="width: 500px; padding-left: 5px;"
@@ -33,6 +33,24 @@
 <script type="text/javascript" src="/js/json2.js"></script>
 
 <script type="text/javascript">
+$(document).ready(function(){
+	load();
+});
+
+function load(){
+	$.post("/blog/modifyLoad.do",{
+		id : ${id}
+	},function(data,status){
+		var ajaxDto =  data;
+		
+		if(ajaxDto.flag){
+			$('#title').val(ajaxDto.data.title);
+			$('#content').val(ajaxDto.data.content);		
+		}else{
+			alert(ajaxDto.message);
+		}
+	});
+}
 
 function modify(){
 	var blog = {
