@@ -9,6 +9,12 @@
 	<div align="center">
 		<h1>用戶中心</h1>
 		<h3 style = " color : blue; ">用户名：${user.username}</h3>
+		
+		<a href="/userinf/toUpload.do">
+	<img src="/resource/image/${user.username}.png" width="80px" height="80px"
+	onerror="javascript:this.src='/resource/image/zz.png';"/>
+		</a>
+		<br/>
 		<a href="http://127.0.0.1:8080">》》》注銷》》》</a> 
 				<br/>
 				<br/>

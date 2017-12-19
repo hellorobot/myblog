@@ -51,12 +51,12 @@
 		<servlet-name>dispatcher</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
-
 	<!-- 访问资源 -->
 	<servlet-mapping>
 		<servlet-name>dispatcher</servlet-name>
-		<url-pattern>/resources/*</url-pattern>
+		<url-pattern>/resource/*</url-pattern>
 	</servlet-mapping>
+
 
 	<!-- <servlet> <servlet-name>dispatcherServlet</servlet-name> <servlet-class>com.dayuanit.atm.servlet.DispatcherServlet</servlet-class> 
 		<init-param> <param-name>packagePath</param-name> <param-value>com/dayuanit/atm</param-value> 
